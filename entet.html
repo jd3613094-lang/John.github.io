@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="logoo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papier en-tête</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #E6332A;
+    }
+
+    header {
+      background: linear-gradient(90deg, #E6332A, #E6332A);
+      color: #fff;
+      padding: 18px 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .slider {
+      width: 420px;
+      height: 420px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      animation: slide 12s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    @keyframes slide {
+      0% {transform: translateX(0);}
+      25% {transform: translateX(-100%);}
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      padding: 25px 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .price {
+      color: #e53935;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 4px 0;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #e53935;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .options-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      flex: 1;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    select, input[type="number"], input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #e53935;
+      outline: none;
+    }
+
+    .btn-add {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .btn-add:hover {
+      background: #e53935;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      text-decoration: none;
+      z-index: 999;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #1ebe5d;
+    }
+
+    @media (max-width: 950px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slider, .product-card {
+        width: 95%;
+      }
+    }
+    .breadcrumb {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #777;
+}
+
+.breadcrumb a {
+  color: #e53935;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #222;
+  font-weight: 600;
+}
+  </style>
+</head>
+<body>
+  <div class="breadcrumb">
+  <a href="index.html">Accueil</a> >
+  <span>Papier en-tête</span>
+</div>
+  <div class="content">
+    <!-- SLIDER -->
+    <div class="slider">
+      <div class="slides">
+        <img src="image/entete/Entet1.jpg" alt="Papier en-tête">
+        <img src="image/entete/entet2.jpg" alt="Papier en-tête">
+      </div>
+    </div>
+
+    <!-- PRODUCT CARD -->
+    <div class="product-card">
+      <div>
+        <h2>Papier en-tête</h2>
+
+        <div class="options-row">
+          <div class="form-group">
+            <label>Format</label>
+            <select id="format">
+              <option value="A4 (21x29.7 cm)">A4</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Impression</label>
+            <select id="impression">
+              <option value="Couleur recto">Couleur recto</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="options-row">
+          <div class="form-group">
+            <label for="papier">Type de papier</label>
+            <select id="papier">
+              <option value="">-- Sélectionnez --</option>
+              <option value="80g">80g</option>
+              <option value="90g">90g</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="qty">Quantité</label>
+            <input type="number" id="qty" value="100" min="100" step="100">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pdf">Ajouter un fichier PDF</label>
+          <input type="file" id="pdf" accept=".pdf">
+        </div>
+
+        <div class="price-breakdown">
+          <strong>Total :</strong> <strong id="total">0 Dhs</strong>
+        </div>
+      </div>
+
+      <div style="margin-top:15px;">
+        <button class="btn-add" id="btnCommander">Commander</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouton WhatsApp -->
+  <a href="https://wa.me/212670924257" class="whatsapp-float" target="_blank" title="Contactez-nous sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Le prix de base : 1180 Dhs pour 2500 unités
+    const prixBase = 1180;
+    const baseQuantite = 2500;
+    const prixParUnite = prixBase / baseQuantite; // prix unitaire automatique
+
+    const qtyInput = document.getElementById("qty");
+    const totalDisplay = document.getElementById("total");
+
+    function updateTotal() {
+      let qty = parseInt(qtyInput.value) || 0;
+      let total = (qty * prixParUnite).toFixed(2);
+      totalDisplay.textContent = total + " Dhs";
+    }
+
+    qtyInput.addEventListener("input", updateTotal);
+    updateTotal();
+
+    document.getElementById("btnCommander").addEventListener("click", function() {
+      let format = document.getElementById("format").value;
+      let impression = document.getElementById("impression").value;
+      let papier = document.getElementById("papier").value || "Non spécifié";
+      let qty = document.getElementById("qty").value;
+      let total = totalDisplay.textContent;
+
+      let message = encodeURIComponent(
+        "Bonjour, je souhaite commander un *Papier en-tête*." +
+        "\n\n📄 Format : " + format +
+        "\n🖨️ Impression : " + impression +
+        "\n📃 Type de papier : " + papier +
+        "\n📦 Quantité : " + qty +
+        "\n💰 Total : " + total
+      );
+
+      window.open("https://wa.me/212670924257?text=" + message, "_blank");
+    });
+  </script>
+</body>
+</html>

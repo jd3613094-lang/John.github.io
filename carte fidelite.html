@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="logoo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartes de Fidélité</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .product-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      display: flex;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* ===== Image produit ===== */
+    .product-gallery {
+      flex: 1;
+      background: #fafafa;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-gallery img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* ===== Détails produit ===== */
+    .product-details {
+      flex: 1.5;
+      padding: 20px;
+    }
+
+    .product-details h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #bb0f18;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #001244;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .upload-box {
+      border: 2px dashed #ccc;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    /* Résumé prix */
+    .price-breakdown {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+      margin-bottom: 20px;
+    }
+
+    .price-breakdown p {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+      font-size: 15px;
+      color: #333;
+    }
+
+    /* ===== Bouton Panier ===== */
+    .add-to-cart {
+      display: inline-block;
+      background: #bb0f18;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      transition: 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+      background: #a10000;
+    }
+
+    @media (max-width: 900px) {
+      .product-container {
+        flex-direction: column;
+      }
+    }.breadcrumb {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #777;
+}
+
+.breadcrumb a {
+  color: #e53935;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #222;
+  font-weight: 600;
+}
+  </style>
+</head>
+<body>
+  <div class="breadcrumb">
+  <a href="index.html">Accueil</a> >
+  <a href="cartevisite.html">Nos Carte de Visite</a> >
+  <span>Carte de Fidélité</span>
+</div>
+  <div class="product-container">
+    
+    <!-- Image Produit -->
+    <div class="product-gallery">
+      <img src="image/carte de visite/carte fedil.jpg" alt="Carte de visite Coins Arrondis">
+    </div>
+
+    <!-- Détails Produit -->
+    <div class="product-details">
+      <h1>Carte de Fidélité</h1>
+
+      <div class="form-group">
+        <label for="taille">TAILLE</label>
+        <select id="taille">
+          <option>8,5 x 5,5 cm</option>
+          <option>9 x 6 cm</option>
+          <option>10 x 7 cm</option>
+          <option>8 x 5 cm</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exemplaires">EXEMPLAIRES</label>
+        <select id="exemplaires">
+          <option value="100" data-price="204">100</option>
+          <option value="200" data-price="350">200</option>
+          <option value="500" data-price="500">500</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="impression">IMPRESSION</label>
+        <select id="impression">
+          <option>Recto</option>
+          <option>Recto-Verso</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="livraison">DÉLAI DE LIVRAISON *</label>
+        <select id="livraison">
+          <option>Choisir une option</option>
+          <option>3 jours</option>
+          <option>7 jours</option>
+        </select>
+      </div>
+
+      <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+        Ajouter vos fichiers d'impression
+      </div>
+      <input type="file" id="fileInput" multiple style="display:none">
+      <div id="fileList" style="font-size:13px; color:#666;"></div>
+
+      <!-- Prix -->
+      <div class="price-breakdown">
+        <p><span>1x Cartes de Fidélité</span><span id="price">162,00Dh</span></p>
+        <p><strong>Total</strong><strong id="total">162,00Dh HT</strong></p>
+      </div>
+
+      <!-- Bouton Panier -->
+      <button class="add-to-cart" id="commanderBtn">Commander</button>
+    </div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const fileList = document.getElementById("fileList");
+    fileInput.addEventListener("change", () => {
+      let files = Array.from(fileInput.files);
+      fileList.innerHTML = files.map(f => `• ${f.name}`).join("<br>");
+    });
+
+    const exemplaires = document.getElementById("exemplaires");
+    const priceSpan = document.getElementById("price");
+    const totalSpan = document.getElementById("total");
+
+    exemplaires.addEventListener("change", () => {
+      let selected = exemplaires.options[exemplaires.selectedIndex];
+      let prix = selected.getAttribute("data-price");
+      priceSpan.textContent = prix + ",00 MAD";
+      totalSpan.textContent = prix + ",00 MAD HT";
+    });
+  </script>
+  <script>
+  const commanderBtn = document.getElementById("commanderBtn");
+
+  commanderBtn.addEventListener("click", () => {
+    const taille = document.getElementById("taille").value;
+    const exemplaire = document.getElementById("exemplaires").value;
+    const impression = document.getElementById("impression").value;
+    const livraison = document.getElementById("livraison").value;
+    const prix = document.getElementById("total").textContent;
+
+    // رقمك فالصيغة الدولية بلا + ولا 00
+    const phone = "212670924257"; // 👈 بدّل هاد الرقم برقمك ديال واتساب
+
+    // الرسالة اللي غادي تبان فواتساب
+    const message = `Bonjour 👋, je souhaite commander :
+- Produit : Carte de Fidélité
+- Taille : ${taille}
+- Exemplaires : ${exemplaire}
+- Impression : ${impression}
+- Livraison : ${livraison}
+- Total : ${prix}`;
+
+    // تكوين رابط واتساب
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    // فتح واتساب
+    window.open(url, "_blank");
+  });
+</script>
+</body>
+</html>

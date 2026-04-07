@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="logoo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PFE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .slider {
+      width: 420px;
+      height: 420px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      animation: slide 12s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    @keyframes slide {
+      0% {transform: translateX(0);}
+      50% {transform: translateX(-100%);}
+      100% {transform: translateX(0);}
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      padding: 25px 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #E6332A;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    select, input[type="number"], input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .two-cols {
+      display: flex;
+      gap: 20px;
+    }
+
+    .two-cols > div {
+      flex: 1;
+    }
+
+    .price-breakdown {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #555;
+      margin: 6px 0;
+    }
+
+    .price {
+      color: #e53935;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .btn-add {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .btn-add:hover {
+      background: #e53935;
+    }
+
+    @media (max-width: 950px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slider, .product-card {
+        width: 95%;
+      }
+      .two-cols {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <!-- SLIDER -->
+    <div class="slider">
+      <div class="slides">
+        <img src="image/book/pfe1.jpg" alt="Thèse">
+        <img src="image/book/pfe2.jpg" alt="Thèse">
+      </div>
+    </div>
+
+    <!-- PRODUCT CARD -->
+    <div class="product-card">
+      <h2>PFE</h2>
+      <div class="price" id="total-affiche">0 Dhs</div>
+
+      <div class="two-cols">
+        <div>
+          <label for="impression">Type d'impression :</label>
+          <select id="impression" onchange="updateTotal()">
+            <option value="0.50">Couleur</option>
+            <option value="0.30">Noir et blanc</option>
+          </select>
+        </div>
+        <div>
+          <label for="recto">Format :</label>
+          <select id="recto" onchange="updateTotal()">
+            <option value="1">Recto-verso</option>
+            <option value="0.6">Recto</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="two-cols">
+        <div>
+          <label for="finition">Finition :</label>
+          <select id="finition" onchange="updateTotal()">
+            <option value="15">Collage</option>
+            <option value="7">Spirale métallique</option>
+          </select>
+        </div>
+        <div>
+          <label for="interieur">Intérieur :</label>
+          <select id="interieur" onchange="updateTotal()">
+            <option value="80">Papier 80g</option>
+            <option value="90">Papier 90g</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="two-cols">
+        <div>
+          <label for="pages">Nombre de pages :</label>
+          <input type="number" id="pages" value="50" min="1" onchange="updateTotal()">
+        </div>
+        <div>
+          <label for="qty">Quantité :</label>
+          <input type="number" id="qty" value="1" min="1" onchange="updateTotal()">
+        </div>
+      </div>
+
+      <div>
+        <label for="fichier">Ajouter un fichier PDF :</label>
+        <input type="file" id="fichier" accept=".pdf">
+      </div>
+
+      <!-- ✅ Prix visibles -->
+      <div class="price-breakdown">
+        <span>Prix d’impression :</span> <span id="prix-impression">0 Dhs</span>
+      </div>
+      <div class="price-breakdown">
+        <strong>Total :</strong> <strong id="total">0 Dhs</strong>
+      </div>
+
+      <button class="btn-add" id="btnCommander">Commander</button>
+    </div>
+  </div>
+
+  <script>
+    function updateTotal() {
+      let typeImpression = parseFloat(document.getElementById("impression").value);
+      let recto = parseFloat(document.getElementById("recto").value);
+      let finition = parseFloat(document.getElementById("finition").value);
+      let interieur = parseInt(document.getElementById("interieur").value);
+      let pages = parseInt(document.getElementById("pages").value);
+      let qty = parseInt(document.getElementById("qty").value);
+
+      // ajustement selon papier intérieur
+      let prixPage = typeImpression;
+      if (interieur === 90 && typeImpression === 0.50) prixPage = 0.60;
+      if (interieur === 90 && typeImpression === 0.30) prixPage = 0.40;
+
+      let prixImpression = pages * prixPage * recto;
+      let total = (prixImpression + finition) * qty;
+
+      document.getElementById("prix-impression").innerText = prixImpression.toFixed(2) + " Dhs";
+      document.getElementById("total").innerText = total.toFixed(2) + " Dhs";
+      document.getElementById("total-affiche").innerText = total.toFixed(2) + " Dhs";
+    }
+
+    document.getElementById("btnCommander").addEventListener("click", function() {
+      let impressionTxt = document.getElementById("impression").options[document.getElementById("impression").selectedIndex].text;
+      let rectoTxt = document.getElementById("recto").options[document.getElementById("recto").selectedIndex].text;
+      let finitionTxt = document.getElementById("finition").options[document.getElementById("finition").selectedIndex].text;
+      let interieurTxt = document.getElementById("interieur").options[document.getElementById("interieur").selectedIndex].text;
+      let pages = document.getElementById("pages").value;
+      let qty = document.getElementById("qty").value;
+      let total = document.getElementById("total").innerText;
+
+      let message = encodeURIComponent(
+        "Bonjour, je veux commander : PFE" +
+        "\nType impression : " + impressionTxt +
+        "\nFormat : " + rectoTxt +
+        "\nFinition : " + finitionTxt +
+        "\nIntérieur : " + interieurTxt +
+        "\nNombre de pages : " + pages +
+        "\nQuantité : " + qty +
+        "\nTotal : " + total
+      );
+
+      window.open("https://wa.me/212670924257?text=" + message, "_blank");
+    });
+
+    updateTotal();
+  </script>
+
+</body>
+</html>

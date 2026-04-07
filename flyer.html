@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="logoo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flyer & Catalogue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .slider {
+      width: 420px;
+      height: 420px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      animation: slide 12s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    @keyframes slide {
+      0% {transform: translateX(0);}
+      50% {transform: translateX(-100%);}
+      100% {transform: translateX(0);}
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      padding: 25px 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #E6332A;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    select, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .two-cols {
+      display: flex;
+      gap: 20px;
+    }
+
+    .two-cols > div {
+      flex: 1;
+    }
+
+    .price-breakdown {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #555;
+      margin: 6px 0;
+    }
+
+    .price {
+      color: #e53935;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .btn-add {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .btn-add:hover {
+      background: #e53935;
+    }
+
+    @media (max-width: 950px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slider, .product-card {
+        width: 95%;
+      }
+      .two-cols {
+        flex-direction: column;
+      }
+    }.breadcrumb {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #777;
+}
+
+.breadcrumb a {
+  color: #e53935;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #222;
+  font-weight: 600;
+}
+  </style>
+</head>
+<body>
+<div class="breadcrumb">
+  <a href="index.html">Accueil</a> >
+  <span>Flyer A5 / A6</span>
+</div>
+  <div class="content">
+    <!-- SLIDER -->
+    <div class="slider">
+      <div class="slides">
+        <img src="image/flyer/1.jpg" alt="Flyer">
+        <img src="image/flyer/flyerA6.jpg" alt="Flyer">
+      </div>
+    </div>
+
+    <!-- PRODUCT CARD -->
+    <div class="product-card">
+      <h2>Flyer A5 / A6</h2>
+      <div class="price" id="total-affiche">0 Dhs</div>
+
+      <div class="two-cols">
+        <div>
+          <label for="taille">Taille :</label>
+          <select id="taille" onchange="updateTotal()">
+            <option value="A5">A5</option>
+            <option value="A6">A6</option>
+          </select>
+        </div>
+        <div>
+          <label for="papier">Papier :</label>
+          <select id="papier" disabled>
+            <option>135g</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="two-cols">
+        <div>
+          <label for="impression">Impression :</label>
+          <select id="impression" onchange="updateTotal()">
+            <option value="recto">Recto</option>
+            <option value="verso">Recto-verso</option>
+          </select>
+        </div>
+        <div>
+          <label for="qty">Quantité :</label>
+          <select id="qty" onchange="updateTotal()">
+            <option value="100">100</option>
+            <option value="250">250</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+            <option value="2000">2000</option>
+            <option value="3000">3000</option>
+            <option value="5000">5000</option>
+            <option value="10000">10000</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="fichier">Ajouter un fichier PDF :</label>
+        <input type="file" id="fichier" accept=".pdf">
+      </div>
+
+      <!-- ✅ حذف سطر Prix unitaire -->
+
+      <div class="price-breakdown">
+        <strong>Total :</strong> <strong id="total">0 Dhs</strong>
+      </div>
+
+      <button class="btn-add" id="btnCommander">Commander</button>
+    </div>
+  </div>
+
+  <script>
+    function updateTotal() {
+      let taille = document.getElementById("taille").value;
+      let impression = document.getElementById("impression").value;
+      let qty = parseInt(document.getElementById("qty").value);
+
+      let prixA5 = {
+        100:  { recto: 80, verso: 120 },
+        250:  { recto: 180, verso: 300 },
+        500:  { recto: 300, verso: 500 },
+        1000: { recto: 500, verso: 650 },
+        2000: { recto: 900, verso: 1300 },
+        3000: { recto: 1000, verso: 1800 },
+        5000: { recto: 1400, verso: 2000 },
+        10000:{ recto: 2500, verso: 3000 }
+      };
+
+      let totalA5 = prixA5[qty] ? prixA5[qty][impression] : 0;
+      let total = taille === "A6" ? totalA5 / 2 : totalA5;
+
+      // مازال نحسب الثمن للوحدة ولكن ما نعرضوش
+      let prixUnitaire = total / qty;
+
+      document.getElementById("total").innerText = total.toFixed(2) + " Dhs";
+      document.getElementById("total-affiche").innerText = total.toFixed(2) + " Dhs";
+    }
+
+    document.getElementById("btnCommander").addEventListener("click", function() {
+      let taille = document.getElementById("taille").value;
+      let impressionTxt = document.getElementById("impression").options[document.getElementById("impression").selectedIndex].text;
+      let qty = document.getElementById("qty").value;
+      let total = document.getElementById("total").innerText;
+
+      let message = encodeURIComponent(
+        "Bonjour, je veux commander :" +
+        "\nProduit : Flyer " + taille +
+        "\nPapier : 135g" +
+        "\nImpression : " + impressionTxt +
+        "\nQuantité : " + qty +
+        "\nTotal : " + total
+      );
+
+      window.open("https://wa.me/212670924257?text=" + message, "_blank");
+    });
+
+    updateTotal();
+  </script>
+
+</body>
+</html>

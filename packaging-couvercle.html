@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="logoo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boîte avec Couvercle – Personnalisé</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    .slider {
+      width: 420px;
+      height: 420px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      animation: slide 12s infinite;
+    }
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    @keyframes slide {
+      0% {transform: translateX(0);}
+      100% {transform: translateX(0);}
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      padding: 25px 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-card h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #e53935;
+    }
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 12px;
+    }
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+      color: #333;
+      font-size: 14px;
+    }
+    input[type="number"], select, input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    input:focus, select:focus {
+      border-color: #e53935;
+      outline: none;
+    }
+    .price-breakdown {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #555;
+      margin: 4px 0;
+    }
+    .btn-add {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+      width: 100%;
+    }
+    .btn-add:hover {
+      background: #e53935;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      text-decoration: none;
+      z-index: 999;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #1ebe5d;
+    }
+    @media (max-width: 950px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slider, .product-card {
+        width: 95%;
+      }
+      .form-row {
+        flex-direction: column;
+      }
+    }
+    .breadcrumb {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #777;
+}
+
+.breadcrumb a {
+  color: #e53935;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #222;
+  font-weight: 600;
+}
+  </style>
+</head>
+<body>
+<div class="breadcrumb">
+  <a href="index.html">Accueil</a> >
+  <a href="packaging.html">Nos Boîtes & Packaging</a> >
+  <span>Boîte avec Couvercle</span>
+</div>
+  <div class="content">
+    <div class="slider">
+      <div class="slides">
+        <img src="image/packaging/Boite avec couvercle.jpg" alt="Boîte avec couvercle">
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div>
+        <h2>Boîte avec Couvercle – Personnalisé</h2>
+
+        <!-- Dimensions -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Largeur (CM)</label>
+            <input type="number" id="largeur" placeholder="ex: 10" min="1">
+          </div>
+          <div class="form-group">
+            <label>Longueur (CM)</label>
+            <input type="number" id="longueur" placeholder="ex: 20" min="1">
+          </div>
+          <div class="form-group">
+            <label>Hauteur (CM)</label>
+            <input type="number" id="hauteur" placeholder="ex: 10" min="1">
+          </div>
+        </div>
+
+        <!-- Autres options -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Unité de mesure</label>
+            <select id="unite">
+              <option value="CM">CM</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Impression</label>
+            <select id="impression">
+              <option value="Quadri - Recto">Quadri - Recto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quantité</label>
+            <input type="number" id="qty" value="100" min="100" onchange="updateTotal()">
+          </div>
+        </div>
+
+        <!-- Papier / Pelliculage / Finition -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Papier</label>
+            <select id="papier">
+              <option value="GCC - 300g">GCC - 300g</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Pelliculage</label>
+            <select id="pelliculage">
+              <option value="Mat - Recto">Mat - Recto</option>
+              <option value="Brillant - Recto">Brillant - Recto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Finition Luxe</label>
+            <select id="finition">
+              <option value="Sans">Sans</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ajouter un fichier PDF</label>
+          <input type="file" accept=".pdf">
+        </div>
+
+        <div class="price-breakdown">
+          <span>Prix unitaire :</span> <strong id="unitPrice">10 Dhs</strong>
+        </div>
+        <div class="price-breakdown">
+          <strong>Total :</strong> <strong id="total">1000 Dhs</strong>
+        </div>
+      </div>
+
+      <button class="btn-add" id="btnCommander">Commander</button>
+    </div>
+  </div>
+
+  <a href="https://wa.me/212670924257" class="whatsapp-float" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    const PRIX_UNITAIRE = 10;
+    function updateTotal() {
+      let qty = parseInt(document.getElementById("qty").value) || 0;
+      if (qty < 100) qty = 100;
+      document.getElementById("qty").value = qty;
+      let total = qty * PRIX_UNITAIRE;
+      document.getElementById("total").innerText = total + " Dhs";
+    }
+
+    document.getElementById("btnCommander").addEventListener("click", function() {
+      let largeur = document.getElementById("largeur").value || "Non spécifié";
+      let longueur = document.getElementById("longueur").value || "Non spécifié";
+      let hauteur = document.getElementById("hauteur").value || "Non spécifié";
+      let unite = document.getElementById("unite").value;
+      let impression = document.getElementById("impression").value;
+      let papier = document.getElementById("papier").value;
+      let pelliculage = document.getElementById("pelliculage").value;
+      let finition = document.getElementById("finition").value;
+      let qty = document.getElementById("qty").value;
+      let total = document.getElementById("total").innerText;
+
+      let message = encodeURIComponent(
+        "📦 *Commande Boîte avec Couvercle – Personnalisé*" +
+        "\n📏 Dimensions : " + largeur + " x " + longueur + " x " + hauteur + " " + unite +
+        "\n🖨️ Impression : " + impression +
+        "\n📄 Papier : " + papier +
+        "\n✨ Pelliculage : " + pelliculage +
+        "\n💎 Finition Luxe : " + finition +
+        "\n📦 Quantité : " + qty +
+        "\n💰 Total : " + total
+      );
+      window.open("https://wa.me/212670924257?text=" + message, "_blank");
+    });
+
+    updateTotal();
+  </script>
+
+</body>
+</html>

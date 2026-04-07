@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="logoo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloc Note et Carnet NCR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #e53935;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .slider {
+      width: 420px;
+      height: 420px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      animation: slide 12s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    @keyframes slide {
+      0% {transform: translateX(0);}
+      25% {transform: translateX(-100%);}
+      50% {transform: translateX(-200%);}
+      100% {transform: translateX(0);}
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      padding: 25px 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .details-line {
+      color: #444;
+      font-size: 14px;
+      margin: 2px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 12px 0;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    select, input[type="number"], input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #e53935;
+      outline: none;
+    }
+
+    .price-breakdown {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #555;
+      margin: 4px 0;
+    }
+
+    .btn-add {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .btn-add:hover {
+      background: #e53935;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      text-decoration: none;
+      z-index: 999;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #1ebe5d;
+    }
+
+    @media (max-width: 950px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slider, .product-card {
+        width: 95%;
+      }
+    }
+    .breadcrumb {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #777;
+}
+
+.breadcrumb a {
+  color: #e53935;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #222;
+  font-weight: 600;
+}
+  </style>
+</head>
+<body>
+<div class="breadcrumb">
+  <a href="index.html">Accueil</a> >
+  <span>Bloc Note et Carnet NCR</span>
+</div>
+  <div class="content">
+    <!-- SLIDER -->
+    <div class="slider">
+      <div class="slides">
+        <img src="image/blocnot/bloc1.jpg" alt="Bloc Note">
+        <img src="image/blocnot/bloc2.jpg" alt="Bloc Note">
+        <img src="image/blocnot/bloc3.jpg" alt="Bloc Note">
+      </div>
+    </div>
+
+    <!-- PRODUCT CARD -->
+    <div class="product-card">
+      <div>
+        <h2>Bloc Note et Carnet NCR</h2>
+        <p class="details-line"><strong>Taille fermée :</strong> A5</p>
+        <hr>
+
+        <div class="form-group">
+          <label>Emplacement spirale</label>
+          <select id="spirale" onchange="updateTotal()">
+            <option value="">-- Sélectionnez --</option>
+            <option value="haut">Spirale haut</option>
+            <option value="gauche">Spirale gauche</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Nombre de feuilles</label>
+          <input type="number" id="feuilles" value="25" min="25" max="150" onchange="updateTotal()">
+        </div>
+
+        <div class="form-group">
+          <label>Papier couverture</label>
+          <select id="papier" onchange="updateTotal()">
+            <option value="">-- Sélectionnez --</option>
+            <option value="300g">300g</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Quantité (min: 25)</label>
+          <input type="number" id="qty" value="25" min="25" onchange="updateTotal()">
+        </div>
+
+        <div class="form-group">
+          <label for="pdf">Ajouter un fichier PDF</label>
+          <input type="file" id="pdf" accept=".pdf">
+        </div>
+
+        <div class="price-breakdown">
+          <span>Prix unitaire :</span> <strong id="unitPrice">25 Dhs</strong>
+        </div>
+        <div class="price-breakdown">
+          <strong>Total :</strong> <strong id="total">625 Dhs</strong>
+        </div>
+      </div>
+
+      <div style="margin-top:15px;">
+        <button class="btn-add" id="btnCommander">Commander</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/212670924257" class="whatsapp-float" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    const PRIX_UNITAIRE = 25;
+
+    function updateTotal() {
+      let qty = parseInt(document.getElementById("qty").value) || 0;
+      if (qty < 25) qty = 25; // quantité minimale
+      document.getElementById("qty").value = qty;
+
+      let total = qty * PRIX_UNITAIRE;
+
+      document.getElementById("unitPrice").innerText = PRIX_UNITAIRE + " Dhs";
+      document.getElementById("total").innerText = total + " Dhs";
+    }
+
+    document.getElementById("btnCommander").addEventListener("click", function() {
+      let spirale = document.getElementById("spirale").value || "Non spécifié";
+      let feuilles = document.getElementById("feuilles").value;
+      let papier = document.getElementById("papier").value || "Non spécifié";
+      let qty = document.getElementById("qty").value;
+      let prixUnitaire = document.getElementById("unitPrice").innerText;
+      let total = document.getElementById("total").innerText;
+
+      let message = encodeURIComponent(
+        "🗒️ *Commande Bloc Note*" +
+        "\n📏 Taille fermée : A5" +
+        "\n🔩 Spirale : " + spirale +
+        "\n📄 Nombre de feuilles : " + feuilles +
+        "\n📘 Papier couverture : " + papier +
+        "\n📦 Quantité : " + qty +
+        "\n💵 Prix unitaire : " + prixUnitaire +
+        "\n💰 Total : " + total
+      );
+
+      window.open("https://wa.me/212670924257?text=" + message, "_blank");
+    });
+
+    updateTotal(); // initialiser total
+  </script>
+
+</body>
+</html>

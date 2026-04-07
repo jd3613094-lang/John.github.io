@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="logoo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Promos</title>  <style>
+    body {
+      margin: 0;
+      background: #f5f6f8;
+    }
+
+    /* --- SECTION --- */
+    .promo-section {
+      padding: 80px 5%;
+      background: linear-gradient(135deg, #ffffff, #ffffff);
+      color: #c50c03;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-section::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      left: -30%;
+      width: 160%;
+      height: 160%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
+      animation: rotateGlow 12s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .promo-section h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 1.5px;
+    }
+
+    /* --- GRID CARDS --- */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 35px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .promo-card {
+      background: #fff;
+      color: #333;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .promo-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    /* --- IMAGE --- */
+    .promo-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .promo-card:hover img {
+      transform: scale(1.1);
+    }
+
+    /* --- BADGE --- */
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #D92B38;
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    /* --- CONTENT --- */
+    .promo-content {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .promo-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .promo-content p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    /* --- PRICE --- */
+    .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #D92B38;
+      margin-bottom: 10px;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #999;
+      font-weight: 500;
+      margin-left: 10px;
+    }
+
+    /* --- RATING --- */
+    .rating {
+      color: #eb3b3b;
+      margin-bottom: 12px;
+    }
+
+    /* --- BUTTON --- */
+    .btn-buy {
+      display: inline-block;
+      background: linear-gradient(90deg, #D92B38, #eb3b3b);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-buy:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #D92B38, #eb3b3b);
+    }
+
+    /* --- MOTION --- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .promo-card {
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .promo-card:nth-child(1) { animation-delay: 0.1s; }
+    .promo-card:nth-child(2) { animation-delay: 0.3s; }
+    .promo-card:nth-child(3) { animation-delay: 0.5s; }
+    .promo-card:nth-child(4) { animation-delay: 0.7s; }
+
+       * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    /* 🔴 الشريط الأحمر */
+.top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #c50c03;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 60px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 2000;
+      transition: all 0.3s ease;
+    }
+
+.center-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ← باش النص يطلع شوية */
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  margin-top: -3px; /* ← تعديل بسيط باش يجي فوسط مثالي */
+}
+
+        /* 🟢 البار الرئيسي */
+    .main-bar {
+      position: sticky;
+      top: 48px; /* يجي مباشرة تحت البار الأحمر */
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .main-bar .logo img {
+      height: 60px;
+      transition: all 0.3s ease;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      margin: 0 30px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 20px 0 0 20px;
+      outline: none;
+    }
+    .search-bar button {
+      background: #c50c03;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 0 20px 20px 0;
+      cursor: pointer;
+    }
+    .contact-btn {
+      background-color: #c50c03;
+      color: #fff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .contact-btn:hover {
+      background-color: #a60800;
+    }
+    .header-links {
+      font-size: 14px;
+      color: #333;
+    }
+    .header-links a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 5px;
+      font-weight: 500;
+    }
+   .icons a i {
+      color: #333;
+      font-size: 18px;
+      margin-left: 12px;
+      transition: 0.3s ease;
+    }
+    .icons a i:hover {
+      color: #c50c03;
+    }
+    /* 🧭 Menu */
+    .menu-bar {
+      position: sticky;
+      top: 136px; /* = 48 + 88px تقريبا */
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      z-index: 900;
+      transition: all 0.3s ease;
+    }
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      color: #333;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .menu-item:hover,
+    .menu-item.active {
+      color: #c50c03;
+    }
+
+ /* 📱 MOBILE HEADER */
+.mobile-header {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  /* نخبيو الهيدرات الكبار */
+  .top-bar,
+  .main-bar,
+  .menu-bar {
+    display: none !important;
+  }
+
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+  }
+
+  .burger-btn {
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+.mobile-logo {
+  position: relative;
+  left: -12px;
+}
+
+.mobile-logo img {
+  height: 60px;
+}
+
+
+  .mobile-contact {
+    background: #c50c03;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* 📱 MOBILE MENU */
+  .mobile-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 18px;
+    overflow-y: auto;
+    z-index: 2500;
+  }
+
+  .mobile-menu a {
+    font-size: 17px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+}
+
+
+
+.footer {
+  background: #c62828; /* اللون الأحمر */
+  color: #fff;
+  font-size: 14px;
+  padding: 40px 60px 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+  margin: 0 20px;
+}
+
+.footer-col h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.footer-col p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin: 6px 0;
+}
+
+.footer-col ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-col ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-logo {
+  margin-top: 10px;
+}
+
+.footer-logo img {
+  max-width: 100px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin-top: 25px;
+  padding-top: 10px;
+  font-size: 13px;
+}
+@media (max-width: 768px) {
+
+  .footer {
+    padding: 35px 20px 15px;
+    text-align: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .footer-col {
+    margin: 0;
+    min-width: 100%;
+  }
+
+  .footer-logo {
+    margin-top: 15px;
+  }
+
+  .footer-logo img {
+    max-width: 90px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+}
+.contact-info a {
+  color: inherit;        /* يرجّع نفس لون النص */
+  text-decoration: none; /* يحيد الخط */
+}
+
+.contact-info a:hover {
+  text-decoration: underline; /* اختياري */
+}
+
+
+/* الكارطات */
+.promos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  margin-top: -40px;   /* باش يطلعو الكارطات فوق الأحمر */
+  position: relative;
+  z-index: 2;
+}
+
+.promo-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.promo-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.promo-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.promo-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.promo-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* الثمن */
+.price {
+  display: block;
+  margin-top: 8px;
+  font-weight: 700;
+  color: #c62828;
+  font-size: 16px; /* صغّر الخط */
+}
+
+
+.promo-card {
+  text-decoration: none;   /* تحيد الخط */
+  color: inherit;          /* تخلي الألوان ديالك الأصلية */
+}
+.promo-card h3,
+.promo-card p,
+.promo-card span {
+  text-decoration: none;
+}
+
+
+
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active, .dot:hover {
+  background: #E6332A;
+}
+.main-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  gap: 15px; /* المسافة بين العناصر */
+}
+
+/* اللوجو */
+.logo img {
+  height: 55px;
+  margin-right: 10px;
+}
+
+/* شريط البحث */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #f3f3f3;
+  border-radius: 50px;
+  overflow: hidden;
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 14px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+  font-size: 16px;
+}
+
+.search-bar button:hover {
+  color: #e30613;
+}
+
+/* Contactez-nous */
+.contact-btn {
+  background: #e30613;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 40px; /* باش يجي وسط بين البحث والروابط */
+  transition: background 0.2s ease;
+}
+.contact-btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-btn {
+  position: relative;
+  position: relative;
+  left: -10px; /* حركها شوية ليسر */
+}
+
+.contact-btn:hover {
+  background: #c10510;
+    /* === WHATSAPP FLOATING BUTTON === */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      text-decoration: none;
+      z-index: 999;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #1ebe5d;
+    }
+
+    @media (max-width: 950px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slider, .product-card {
+        width: 95%;
+      }
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  /* === POPUPS PROFESSIONNELS === */
+  .popup {
+    display: none;
+    position: absolute;
+    top: 75px;
+    right: 60px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    padding: 18px;
+    width: 260px;
+    z-index: 3000;
+    animation: fadeIn 0.25s ease;
+  }
+
+  .popup h3 {
+    margin-top: 0;
+    color: #c50c03;
+    font-size: 17px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+  }
+
+  .popup form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+  }
+
+  .popup form button {
+    width: 100%;
+    padding: 10px;
+    background: #c50c03;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .popup form button:hover {
+    background: #a60a00;
+  }
+
+  .popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .popup ul li {
+    padding: 6px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  .popup ul li:last-child {
+    border-bottom: none;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  /* === BADGE DU PANIER === */
+  .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: #e30613;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: none;
+  }
+  /* اللوجو */
+.logo img {
+  height: 55px;
+  margin-right: 10px;
+}
+
+/* شريط البحث */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #f3f3f3;
+  border-radius: 50px;
+  overflow: hidden;
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 14px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+  font-size: 16px;
+}
+
+.search-bar button:hover {
+  color: #e30613;
+}
+
+/* Contactez-nous */
+.contact-btn {
+  background: #e30613;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 40px; /* باش يجي وسط بين البحث والروابط */
+  transition: background 0.2s ease;
+}
+.contact-btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-btn {
+  position: relative;
+  position: relative;
+  left: -10px; /* حركها شوية ليسر */
+}
+
+.contact-btn:hover {
+  background: #c10510;
+    /* === WHATSAPP FLOATING BUTTON === */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      text-decoration: none;
+      z-index: 999;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #1ebe5d;
+    }
+
+    @media (max-width: 950px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slider, .product-card {
+        width: 95%;
+      }
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  /* === POPUPS PROFESSIONNELS === */
+  .popup {
+    display: none;
+    position: absolute;
+    top: 75px;
+    right: 60px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    padding: 18px;
+    width: 260px;
+    z-index: 3000;
+    animation: fadeIn 0.25s ease;
+  }
+
+  .popup h3 {
+    margin-top: 0;
+    color: #c50c03;
+    font-size: 17px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+  }
+
+  .popup form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+  }
+
+  .popup form button {
+    width: 100%;
+    padding: 10px;
+    background: #c50c03;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .popup form button:hover {
+    background: #a60a00;
+  }
+
+  .popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .popup ul li {
+    padding: 6px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  .popup ul li:last-child {
+    border-bottom: none;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  /* === BADGE DU PANIER === */
+  .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: #e30613;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: none;
+  }
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    /* 🖼 Slider container */
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 400px;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    /* 📸 كل Slide */
+    .slides {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ✅ Slide نشطة */
+    .active {
+      display: block;
+      animation: fade 1s ease-in-out;
+    }
+
+    /* 🎞 تأثير التبدال */
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ⚪ Dots */
+    .dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .dots .active-dot {
+      background: #fff;
+      transform: scale(1.2);
+    }
+</style>
+</head>
+<body>
+  <div class="header-space"></div>
+<!-- 🍔 Burger Menu -->
+
+  <!-- 🔴 الشريط الأحمر -->
+  <div class="top-bar">
+    <div class="side-text">
+      <span>Imprimeur</span>
+      <span>en ligne 100%</span>
+    </div>
+    <div class="center-text">
+      <span class="title">Bienvenue chez <strong>mcTirage</strong>.</span>
+      <span class="subtitle">L’excellence et la qualité au service de vos projets.</span>
+    </div>
+    <div class="side-text">
+      <span>Les meilleurs prix</span>
+      <span>au Maroc</span>
+    </div>
+  </div>
+<!-- 📱 MOBILE HEADER -->
+<div class="mobile-header">
+  <button class="burger-btn" onclick="toggleMobileMenu()">☰</button>
+
+<div class="mobile-logo">
+  <a href="index.html">
+    <img src="logostof.png" alt="mcTirage">
+  </a>
+</div>
+
+  <a href="https://wa.me/212670924257" target="_blank" class="mobile-contact">
+    Contactez-nous
+  </a>
+</div>
+
+<!-- 📱 MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="superpromos.html">Supers Promos</a>
+  <a href="cachet.html">Cachet Trodat</a>
+  <a href="vinyle.html">Support Souple</a>
+  <a href="supportPLV.html">Support PLV</a>
+  <a href="livre.html">Thèse & Rapport</a>
+  <a href="flyer.html">Flyer & Catalogue</a>
+  <a href="cartevisite.html">Cartes de Visite</a>
+  <a href="packaging.html">Sachet & Packaging</a>
+  <a href="che.html">chemise à Rabat</a>
+  <a href="blocnot.html">Bloc Note & Carnet</a>
+  <a href="habillage.html">Marquage de voiture</a>
+  <a href="entet.html">Papier Entête</a>
+  <a href="carterigide.html">Carte PVC & Badge</a>
+</div>
+<script>
+function toggleMobileMenu() {
+  document.getElementById("mobileMenu").classList.toggle("active");
+}
+</script>
+
+
+  <!-- ⚪ الشريط الرئيسي -->
+<div class="main-bar" id="mainHeader">
+  <div class="logo">
+    <a href="index.html">
+      <img src="logostof.png" alt="mcTirage">
+    </a>
+  </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher un Produit">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <a href="https://wa.me/212670924257" target="_blank" class="contact-btn">Contactez-nous</a>
+
+
+    <div class="header-links">
+      <a href="societe.html">Société</a> | <a href="service.html">Nos Services</a> | <a href="aide.html">Aide</a>
+    </div>
+
+    <div class="icons">
+      <a href="#"><i class="fa-solid fa-user"></i></a>
+      <a href="#"><i class="fa-solid fa-bell"></i></a>
+      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </div>
+
+  <!-- 🧭 قائمة الأقسام -->
+  <div class="menu-bar" id="menuBar">
+        <div class="menu-items">
+<a href="superpromos.html" class="menu-item active"><span class="line1">Supers</span><span class="line2">Promos</span></a>
+<a href="cachet.html" class="menu-item"><span class="line1">Cachet</span><span class="line2">Trodat</span></a>
+<a href="vinyle.html" class="menu-item"><span class="line1">Support</span><span class="line2">Souple</span></a>
+<a href="supportPLV.html" class="menu-item"><span class="line1">Support</span><span class="line2">PLV</span></a>
+<a href="livre.html" class="menu-item"><span class="line1">Thèse</span><span class="line2">Rapport..</span></a>
+<a href="flyer.html" class="menu-item"><span class="line1">Flyer</span><span class="line2">Catalogue</span></a>
+<a href="cartevisite.html" class="menu-item"><span class="line1">Cartes</span><span class="line2">de Visites</span></a>
+<a href="packaging.html" class="menu-item"><span class="line1">Sachet</span><span class="line2">& Packaging</span></a>
+<a href="che.html" class="menu-item"><span class="line1">chemise</span><span class="line2">à Rabat</span></a>
+<a href="blocnot.html" class="menu-item"><span class="line1">Bloc Note</span><span class="line2">et Carnet NCR</span></a>
+<a href="habillage.html" class="menu-item"><span class="line1">marquage</span><span class="line2">voiture</span></a>
+<a href="entet.html" class="menu-item"><span class="line1">Papier </span><span class="line2">Entête A4</span></a>
+<a href="carterigide.html" class="menu-item"><span class="line1">Carte</span><span class="line2">PVC & Badge</span></a>
+</div>
+    </div>
+  </div>
+
+
+</body>
+</html>
+
+  <section class="promo-section">
+    <h2>Super Promos</h2>
+
+    <div class="cards-container">
+
+<a href="cachetpromotion.html" class="promo-card">
+  <div class="badge">Top Vente</div>
+  <img src="image/cachet/cac.jpg" alt="Promo 1">
+  <div class="promo-content">
+    <h3>Cachet Trodat 3912</h3>
+    <p>Cachet Trodat 3912 4 lignes max</p>
+    <div class="rating">
+      ★★★★☆ (125 avis)
+    </div>
+    <div class="price">80 DH <span class="old-price">profitez dès maintenant</span></div>
+    <span class="btn-buy"><i class="fas fa-shopping-cart"></i> Commander</span>
+  </div>
+</a>
+
+<a href="livre.html" class="promo-card">
+  <div class="badge">Nouveau</div>
+  <img src="image/book/rappor2.jpg" alt="Promo 2">
+  <div class="promo-content">
+    <h3>Thèse · Rapport · Cours · PFE</h3>
+    <p>Impression professionnelle de vos documents scolaires et universitaires.</p>
+    <div class="rating">
+      ★★★★★ (98 avis)
+    </div>
+    <div class="price">À partir de 39DH <span class="old-price"></span></div>
+    <span class="btn-buy"><i class="fas fa-bolt"></i> Profiter</span>
+  </div>
+</a>
+
+<a href="flyer.html" class="promo-card">
+  <div class="badge">Nouveau</div>
+  <img src="image/flyer/1.jpg" alt="Promo 3">
+  <div class="promo-content">
+    <h3>Flyer A5 / A6</h3>
+    <p>Impression haute qualité pour une communication percutante.</p>
+    <div class="rating">
+      ★★★★☆ (76 avis)
+    </div>
+    <div class="price">299 DH <span class="old-price">tarif exceptionnel</span></div>
+    <span class="btn-buy"><i class="fas fa-eye"></i> Voir Détails</span>
+  </div>
+</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+  <div class="footer-content">
+    <!-- Colonne 1 -->
+    <div class="footer-col">
+      <h3>COORDONNÉES</h3>
+<div class="contact-info">
+  <p>
+    <strong>Adresse imprimerie</strong><br>
+    <a href="https://www.google.com/maps/search/?api=1&query=Av.+Oued+Bouregag,+Salé,+Maroc" target="_blank">
+      Av. Oued Bouregag,<br>Salé - Maroc
+    </a>
+  </p>
+
+  <p>
+    <strong>Email</strong><br>
+    <a href="mailto:mctirage@gmail.com">mctirage@gmail.com</a>
+  </p>
+
+  <p>
+    <strong>Tél</strong><br>
+    <a href="tel:+212670924257">+212 670-924257</a><br>
+    <a href="tel:+212694813118">+212 694-813118</a>
+  </p>
+</div>
+    </div>
+
+    <!-- Colonne 2 -->
+    <div class="footer-col">
+      <h3>INFORMATIONS</h3>
+      <ul>
+        <li><a href="aide.html">Aide</a></li>
+        <li><a href="#">Avis Clients</a></li>
+        <li><a href="#">Réclamation</a></li>
+        <li><a href="#">Devis</a></li>
+      </ul>
+    </div>
+
+    <!-- Colonne 3 -->
+    <div class="footer-col">
+      <h3>NOS HORAIRES</h3>
+      <p><strong>Lundi - Vendredi</strong><br>09:30 - 14:00<br>15:00 - 18:30</p>
+      <p><strong>Samedi</strong><br>09:30 - 14:00</p>
+      <div class="footer-logo">
+        <img src="nbvlogo.png" alt="MC Tirage">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright © 2025 mctirage.com. Tous droits réservés.</p>
+  </div>
+</footer>
+<script>
+const burger = document.getElementById("burger");
+const menuBar = document.getElementById("menuBar");
+
+burger.addEventListener("click", () => {
+  menuBar.classList.toggle("active");
+});
+</script>
+</body>
+</html>
